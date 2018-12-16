@@ -1,0 +1,113 @@
+set pager_index_lines = 10
+bind pager k previous-line
+bind pager j next-line
+bind pager R group-reply
+
+macro pager \Co "|urlview<enter>" "call urlview to open links"
+
+set folder = ~/.mail
+
+set editor = "$EDITOR -c 'set tw=72'"
+
+set alias_file = ~/.mutt/alias
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+set mailcap_path = ~/.mutt/mailcap
+set sig_dashes = no
+set signature = ~/.mutt/signature
+set mailcap_path  = ~/.mutt/mailcap
+
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+set query_command = "mu cfind --format=mutt-ab '%s'"
+
+folder-hook github.com/ source ~/.mutt/account/github.com
+folder-hook ttaylorr.com/ source ~/.mutt/account/ttaylorr.com
+
+source ~/.mutt/account/github.com
+
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account/github.com<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account/ttaylorr.com<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/account/cs.washington.edu<enter><change-folder>!<enter>'
+
+macro index <f5> "<shell-escape>mu find --clearlinks --format=links --linksdir=~/.mail/search " \
+  "mu find"
+macro index <f6> "<change-folder-readonly>~/.mail/search" \
+  "mu find results"
+
+bind index gg first-entry
+bind index G last-entry
+
+macro index x "<tag-entry><previous-entry>"
+
+bind index k previous-entry
+bind index j next-entry
+bind generic,index,pager \Cd half-down
+bind generic,index,pager \Cu half-up
+
+macro index I "<clear-flag>N<previous-entry>"
+macro pager I "<clear-flag>N<exit>"
+macro index U "<set-flag>N<previous-entry>"
+macro pager U "<set-flag>N<exit>"
+macro index,pager e ":set edit_headers=yes<enter><edit>:set edit_headers=no<enter><sync-mailbox>"
+
+macro pager,index D '<shell-escape>rm -rf $HOME/patch<enter>'
+macro pager,index A '<pipe-message>cat > ~/patch<enter>'
+macro index,pager b ":set edit_headers=yes<enter><resend-message>:set edit_headers=no<enter>"
+macro index,pager B ":set editor=true<enter><resend-message><send-message>:set editor=$EDITOR<enter>"
+
+bind index <space> collapse-thread
+bind index <tab> sync-mailbox
+
+bind index R group-reply
+bind index \CR recall-message
+
+set sidebar_visible = yes
+set sidebar_width   = 28
+
+bind index,pager <down>   sidebar-next
+bind index,pager <up>     sidebar-prev
+bind index,pager <right>  sidebar-open
+
+color index brightblue brightwhite ~N
+color index brightwhite black ~D
+
+color normal default brightwhite
+color hdrdefault brightblue brightwhite
+color signature brightyellow brightwhite
+color tree brightblue brightwhite
+
+color body brightwhite default ^(diff).*
+color body white default ^[\-\-\-].*
+color body white default ^[\+\+\+].*
+color body green default ^[\+].*
+color body red default ^[\-].*
+color body brightblue  default [@@].*
+color body brightwhite default ^(Signed-off-by).*
+color body brightwhite default ^(Cc)
+
+set wait_key = no
+set mbox_type = Maildir
+set timeout = 3
+set mail_check = 0
+unset move
+set delete
+unset confirmappend
+set quit
+unset mark_old
+set beep_new
+
+set sendmail_wait = 0
+unset record
+
+set sort = threads
+set sort_aux = last-date-received
+set sort_re
+
+set realname = "Taylor Blau"
+
+ignore *
+unignore from: to: cc: date: subject:
+hdr_order from: to: cc: date: subject:
