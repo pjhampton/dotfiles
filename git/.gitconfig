@@ -1,48 +1,48 @@
 [user]
-	name = Taylor Blau
-	email = me@ttaylorr.com
-	signingkey = 4DEFFDEA0FB41081E5DD1EC892F6843753180A31
+  name = Peter Hampton
+  email = pjhampton@protonmail.com 
+  signingkey = 
 [alias]
-	a = add
-	aa = add --all
-	always = "!git rev-parse 2>/dev/null || cd ~/github/git; git"
-	br = branch
-	ci = commit
-	co = checkout
-	coi = checkout-interactive
-	cop = checkout-pr
-	di = diff
-	lb = checkout -
-	lg = log --oneline
-	ll = "!git always --no-pager log -1 --pretty='tformat:%h (%s, %ad)' --date=short"
-	st = status
-	up = pull --rebase --autostash
+  a = add
+  aa = add --all
+  always = "!git rev-parse 2>/dev/null || cd ~/github/git; git"
+  br = branch
+  ci = commit
+  co = checkout
+  coi = checkout-interactive
+  cop = checkout-pr
+  di = diff
+  lb = checkout -
+  lg = log --oneline
+  ll = "!git always --no-pager log -1 --pretty='tformat:%h (%s, %ad)' --date=short"
+  st = status
+  up = pull --rebase --autostash
 [push]
-	default = current
+  default = current
 [pull]
-	default = current
+  default = current
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [diff]
-	compactionHeuristic = true
-	algorithm = patience
+  compactionHeuristic = true
+  algorithm = patience
 [github]
-	user = ttaylorr
+  user = ttaylorr
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [gpg]
-	program = gpg
+  program = gpg
 [sendemail]
   from = Taylor Blau <me@ttaylorr.com>
   smtpserver = "/usr/local/bin/msmtp"
   smtpserveroption = "-a"
   smtpserveroption = "ttaylorr.com"
 [merge]
-	conflictstyle = diff3
+  conflictstyle = diff3
