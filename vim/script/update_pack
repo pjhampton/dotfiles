@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #
-# Update all sub-modules for a given packname, defaulting to "ttaylorr".
-#
 # USAGE:
 #   $ update_pack [packname]
 

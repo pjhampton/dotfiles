@@ -4,7 +4,6 @@ tap 'go-delve/delve'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/tex'
-tap 'ttaylorr/homebrew-mutt'
 
 brew 'ack'
 brew 'asciidoc'

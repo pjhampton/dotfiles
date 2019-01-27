@@ -1,7 +1,7 @@
 DOTFILES_ROOT := $(shell pwd)
 
-all: bash zsh brew bin launchagents git vim tmux editorconfig offlineimap msmtp mutt urlview defaults rust
-.PHONY: bash zsh brew bin launchagents git vim tmux editorconfig offlineimap msmtp mutt urlview defaults rust
+all: bash zsh brew bin git vim tmux editorconfig msmtp urlview defaults rust
+.PHONY: bash zsh brew bin git vim tmux editorconfig msmtp mutt urlview defaults rust
 
 brew:
 	ln -fs $(DOTFILES_ROOT)/brew/Brewfile ${HOME}/.Brewfile
@@ -9,9 +9,6 @@ brew:
 
 bin:
 	[ ! -h ${HOME}/.bin ] && ln -fs $(DOTFILES_ROOT)/bin ${HOME}/.bin || true
-
-launchagents:
-	ln -fs $(DOTFILES_ROOT)/launchagents/com.ttaylorr.offlineimap.plist ${HOME}/Library/LaunchAgents/com.ttaylorr.oflineimap.plist
 
 git:
 	ln -fs $(DOTFILES_ROOT)/git/.gitconfig ${HOME}/.gitconfig
@@ -26,18 +23,8 @@ vim:
 editorconfig:
 	ln -fs $(DOTFILES_ROOT)/editorconfig/.editorconfig ${HOME}/.editorconfig
 
-offlineimap:
-	ln -fs $(DOTFILES_ROOT)/offlineimap/.offlineimaprc ${HOME}/.offlineimaprc
-	ln -fs $(DOTFILES_ROOT)/offlineimap/.offlineimap.py ${HOME}/.offlineimap.py
-
 msmtp:
 	ln -fs $(DOTFILES_ROOT)/msmtp/.msmtprc ${HOME}/.msmtprc
-
-mutt:
-	ln -fs $(DOTFILES_ROOT)/mutt/.muttrc ${HOME}/.muttrc
-	[ ! -L ${HOME}/.mutt/account ] && ln -fs $(DOTFILES_ROOT)/mutt/account/ ${HOME}/.mutt/account || true
-	ln -fs $(DOTFILES_ROOT)/mutt/signature ${HOME}/.mutt/signature
-	ln -fs $(DOTFILES_ROOT)/mutt/mailcap ${HOME}/.mutt/mailcap
 
 defaults:
 	defaults write -g KeyRepeat -int 1
