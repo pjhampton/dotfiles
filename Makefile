@@ -23,9 +23,6 @@ vim:
 editorconfig:
 	ln -fs $(DOTFILES_ROOT)/editorconfig/.editorconfig ${HOME}/.editorconfig
 
-msmtp:
-	ln -fs $(DOTFILES_ROOT)/msmtp/.msmtprc ${HOME}/.msmtprc
-
 defaults:
 	defaults write -g KeyRepeat -int 1
 	defaults write -g InitialKeyRepeat -int 10
@@ -38,13 +35,6 @@ rust:
 	rustup component add rust-src
 	rustup default stable
 	which racer >/dev/null || cargo install racer
-
-tmux:
-	$(call install-if-missing, "tmux")
-	mkdir -p ${HOME}/.tmux/plugins
-	ln -fs $(DOTFILES_ROOT)/tmux/tpm ${HOME}/.tmux/plugins/
-	ln -fs $(DOTFILES_ROOT)/tmux/.tmux.conf ${HOME}/.tmux.conf
-	${HOME}/.tmux/plugins/tpm/bindings/install_plugins
 
 urlview:
 	ln -fs $(DOTFILES_ROOT)/urlview/.urlview ${HOME}/.urlview
