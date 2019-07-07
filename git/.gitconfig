@@ -31,7 +31,7 @@
   compactionHeuristic = true
   algorithm = patience
 [github]
-  user = ttaylorr
+  user = pjhampton
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -39,10 +39,5 @@
   required = true
 [gpg]
   program = gpg
-[sendemail]
-  from = Taylor Blau <me@ttaylorr.com>
-  smtpserver = "/usr/local/bin/msmtp"
-  smtpserveroption = "-a"
-  smtpserveroption = "ttaylorr.com"
 [merge]
   conflictstyle = diff3
