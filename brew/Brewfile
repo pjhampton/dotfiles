@@ -44,6 +44,7 @@ brew 'zsh'
 
 cask 'amethyst'
 cask 'aware'
+case 'burp-suite'
 cask 'discord'
 cask 'docker'
 cask 'dropbox'
