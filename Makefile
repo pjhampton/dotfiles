@@ -28,14 +28,6 @@ defaults:
 	defaults write -g InitialKeyRepeat -int 10
 	defaults write -g ApplePressAndHoldEnabled -bool false
 
-rust:
-	[ ! -x "$(which rustup)" ] && curl https://sh.rustup.rs -sSf | sh
-	rustup self upgrade-data
-	rustup update stable
-	rustup component add rust-src
-	rustup default stable
-	which racer >/dev/null || cargo install racer
-
 urlview:
 	ln -fs $(DOTFILES_ROOT)/urlview/.urlview ${HOME}/.urlview
 
