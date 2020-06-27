@@ -1,11 +1,13 @@
 tap 'caskroom/cask'
 tap 'caskroom/homebrew-fonts'
 tap 'go-delve/delve'
+tap 'wallix/awless'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 
 brew 'ack'
 brew 'asciidoc'
+brew 'awless'
 brew 'awscli'
 brew 'bash'
 brew 'cloc'
